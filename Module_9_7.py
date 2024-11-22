@@ -1,12 +1,16 @@
 def is_prime(f):
     def wrapper(*args):
+        list = ''
         rez = f(*args)
-        for i in range(2, rez+1):
-            if rez%i!=0 and rez%1==0 :
-                print('Простое')
-            else:
-                print('Составное')
-            return rez
+        for i in range(2, rez):
+            g = rez % i == 0
+            list += str(g)
+        if 'True' not in list:
+            print('Простое')
+        else:
+            print('Составное')
+
+        return rez
     return wrapper
 
 
@@ -16,5 +20,5 @@ def is_prime(f):
 def sum_three(*value):
     return sum(value)
 
-result = sum_three(97, 3, 10)
+result = sum_three(1, 1, 8)
 print(result)
